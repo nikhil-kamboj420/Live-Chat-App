@@ -1,0 +1,30 @@
+{
+    "sourceFile": "package.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1731774640109,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731774649930,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,12 @@\n+{\n+  \"name\": \"chat-application\",\n+  \"version\": \"1.0.0\",\n+  \"main\": \"index.js\",\n+  \"scripts\": {\n+    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n+  },\n+  \"keywords\": [],\n+  \"author\": \"Nikhil Kamboj\",\n+  \"license\": \"ISC\",\n+  \"description\": \"\"\n+}\n"
+                },
+                {
+                    "date": 1731774696887,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,12 @@\n+{\n+  \"name\": \"chat-application\",\n+  \"version\": \"1.0.0\",\n+  \"main\": \"index.js\",\n+  \"scripts\": {\n+    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n+  },\n+  \"keywords\": [],\n+  \"author\": \"Nikhil Kamboj\",\n+  \"license\": \"ISC\",\n+  \"description\": \"\"description\": \"A real-time chat application for seamless communication and collaboration.\"\"\n+}\n"
+                },
+                {
+                    "date": 1731774703189,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,12 @@\n+{\n+  \"name\": \"chat-application\",\n+  \"version\": \"1.0.0\",\n+  \"main\": \"index.js\",\n+  \"scripts\": {\n+    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n+  },\n+  \"keywords\": [],\n+  \"author\": \"Nikhil Kamboj\",\n+  \"license\": \"ISC\",\n+  \"description\": \"\"A real-time chat application for seamless communication and collaboration.\"\"\n+}\n"
+                }
+            ],
+            "date": 1731774640109,
+            "name": "Commit-0",
+            "content": "{\n  \"name\": \"chat-application\",\n  \"version\": \"1.0.0\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n  },\n  \"keywords\": [],\n  \"author\": \"nikhil\",\n  \"license\": \"ISC\",\n  \"description\": \"\"\n}\n"
+        }
+    ]
+}

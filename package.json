@@ -1,0 +1,12 @@
+{
+  "name": "chat-application",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Nikhil Kamboj",
+  "license": "ISC",
+  "description": "A real-time chat application for seamless communication and collaboration."
+}
