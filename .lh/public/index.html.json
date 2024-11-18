@@ -1,0 +1,30 @@
+{
+    "sourceFile": "public/index.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1731951374724,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731951379993,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,30 @@\n+<!DOCTYPE html>\r\n+<html lang=\"en\">\r\n+<head>\r\n+  <meta charset=\"UTF-8\">\r\n+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n+  <title>Chat App - Home</title>\r\n+  <link rel=\"stylesheet\" href=\"style.css\">\r\n+</head>\r\n+<body>\r\n+  <div class=\"container\">\r\n+    <h1>Welcome to Chat App</h1>\r\n+    <form id=\"joinForm\">\r\n+      <input type=\"text\" id=\"username\" placeholder=\"Enter your username\" required>\r\n+      <input type=\"text\" id=\"room\" placeholder=\"Enter room name\" required>\r\n+      <button type=\"submit\">Join Chat</button>\r\n+      p\r\n+    </form>\r\n+  </div>\r\n+  <script>\r\n+    document.getElementById('joinForm').addEventListener('submit', (e) => {\r\n+      e.preventDefault();\r\n+      const username = document.getElementById('username').value;\r\n+      const room = document.getElementById('room').value;\r\n+      window.location.href = `chat.html?username=${username}&room=${room}`;\r\n+    });\r\n+  </script>\r\n+  <script src=\"./app.js\"></script>\r\n+  <script src=\"./server.js\"></script>\r\n+</body>\r\n+</html>\r\n"
+                },
+                {
+                    "date": 1731951385711,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     <form id=\"joinForm\">\r\n       <input type=\"text\" id=\"username\" placeholder=\"Enter your username\" required>\r\n       <input type=\"text\" id=\"room\" placeholder=\"Enter room name\" required>\r\n       <button type=\"submit\">Join Chat</button>\r\n-      p\r\n+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem quo, molestias beatae sint veniam illo aliquam consectetur itaque porro, incidunt cupiditate expedita voluptatum nobis corrupti sunt ad excepturi cumque optio?</p>\r\n     </form>\r\n   </div>\r\n   <script>\r\n     document.getElementById('joinForm').addEventListener('submit', (e) => {\r\n@@ -27,34 +27,4 @@\n   <script src=\"./app.js\"></script>\r\n   <script src=\"./server.js\"></script>\r\n </body>\r\n </html>\r\n-<!DOCTYPE html>\r\n-<html lang=\"en\">\r\n-<head>\r\n-  <meta charset=\"UTF-8\">\r\n-  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n-  <title>Chat App - Home</title>\r\n-  <link rel=\"stylesheet\" href=\"style.css\">\r\n-</head>\r\n-<body>\r\n-  <div class=\"container\">\r\n-    <h1>Welcome to Chat App</h1>\r\n-    <form id=\"joinForm\">\r\n-      <input type=\"text\" id=\"username\" placeholder=\"Enter your username\" required>\r\n-      <input type=\"text\" id=\"room\" placeholder=\"Enter room name\" required>\r\n-      <button type=\"submit\">Join Chat</button>\r\n-      \r\n-    </form>\r\n-  </div>\r\n-  <script>\r\n-    document.getElementById('joinForm').addEventListener('submit', (e) => {\r\n-      e.preventDefault();\r\n-      const username = document.getElementById('username').value;\r\n-      const room = document.getElementById('room').value;\r\n-      window.location.href = `chat.html?username=${username}&room=${room}`;\r\n-    });\r\n-  </script>\r\n-  <script src=\"./app.js\"></script>\r\n-  <script src=\"./server.js\"></script>\r\n-</body>\r\n-</html>\r\n"
+                },
+                {
+                    "date": 1731951407638,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,8 @@\n     <form id=\"joinForm\">\r\n       <input type=\"text\" id=\"username\" placeholder=\"Enter your username\" required>\r\n       <input type=\"text\" id=\"room\" placeholder=\"Enter room name\" required>\r\n       <button type=\"submit\">Join Chat</button>\r\n-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem quo, molestias beatae sint veniam illo aliquam consectetur itaque porro, incidunt cupiditate expedita voluptatum nobis corrupti sunt ad excepturi cumque optio?</p>\r\n     </form>\r\n   </div>\r\n   <script>\r\n     document.getElementById('joinForm').addEventListener('submit', (e) => {\r\n"
+                }
+            ],
+            "date": 1731951374724,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Chat App - Home</title>\r\n  <link rel=\"stylesheet\" href=\"style.css\">\r\n</head>\r\n<body>\r\n  <div class=\"container\">\r\n    <h1>Welcome to Chat App</h1>\r\n    <form id=\"joinForm\">\r\n      <input type=\"text\" id=\"username\" placeholder=\"Enter your username\" required>\r\n      <input type=\"text\" id=\"room\" placeholder=\"Enter room name\" required>\r\n      <button type=\"submit\">Join Chat</button>\r\n      \r\n    </form>\r\n  </div>\r\n  <script>\r\n    document.getElementById('joinForm').addEventListener('submit', (e) => {\r\n      e.preventDefault();\r\n      const username = document.getElementById('username').value;\r\n      const room = document.getElementById('room').value;\r\n      window.location.href = `chat.html?username=${username}&room=${room}`;\r\n    });\r\n  </script>\r\n  <script src=\"./app.js\"></script>\r\n  <script src=\"./server.js\"></script>\r\n</body>\r\n</html>\r\n"
+        }
+    ]
+}
