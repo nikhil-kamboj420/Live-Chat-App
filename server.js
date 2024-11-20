@@ -6,6 +6,10 @@ const app = express();
 const PORT = 5500;
 
 app.use(express.static(path.join(__dirname, 'public')));
+// Define a route for the /room endpoint
+app.get('/room', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'chat.html')); // Serve the chat.html file
+});
 
 const server = app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
@@ -17,24 +21,40 @@ const rooms = {}; // { roomName: [ { username, socket } ] }
 
 wss.on('connection', (ws) => {
   ws.on('message', (data) => {
-    const message = JSON.parse(data);
+    try {
+      const message = JSON.parse(data);
 
-    switch (message.type) {
-      case 'join':
-        handleJoin(ws, message);
-        break;
+      switch (message.type) {
+        case 'join':
+          handleJoin(ws, message);
+          break;
 
-      case 'message':
-        handleMessage(ws, message.text);
-        break;
+        case 'message':
+          handleMessage(ws, message.text);
+          break;
 
-      case 'leave':
-        handleLeave(ws);
-        break;
+        case 'leave':
+          handleLeave(ws);
+          break;
+        case 'getRooms':
+          handleGetRooms(ws);
+          break;
+        default:
+          ws.send(JSON.stringify({ type: 'error', message: 'Invalid message type.' }));
+      }
+    } catch (error) {
+      console.error(error);
+      ws.send(JSON.stringify({ type: 'error', message: 'Invalid message format.' }));
     }
   });
 
   ws.on('close', () => handleLeave(ws));
+  ws.on('error', (error) => {
+    console.error(error);
+    handleLeave(ws);
+  });
+
+  ws.send(JSON.stringify({ type: 'connected', message: 'You are now connected!' }));
 });
 
 function handleJoin(ws, { username, room }) {
@@ -100,4 +120,9 @@ function broadcast(room, message) {
   rooms[room].forEach((client) => {
     client.socket.send(JSON.stringify(message));
   });
+}
+
+function handleGetRooms(ws) {
+  const availableRooms = Object.keys(rooms);
+  ws.send(JSON.stringify({ type: 'roomsList', rooms: availableRooms }));
 }
