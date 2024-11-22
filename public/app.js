@@ -11,10 +11,13 @@ ws.onopen = () => {
 };
 
 ws.onmessage = (event) => {
-  const message = JSON.parse(event.data); // Parse JSON instead of stringifying
+  const message = JSON.parse(event.data);
+
   if (message.type === "roomsList") {
-    displayAvailableRooms(message.rooms); // Implement this function to update the UI
+    displayAvailableRooms(message.rooms); // Update UI with room list
+    return;
   }
+
   const chatMessages = document.getElementById("chatMessages");
 
   if (message.type === "error") {
@@ -25,25 +28,45 @@ ws.onmessage = (event) => {
 
   const messageDiv = document.createElement('div');
 
-  if (message.type === 'chat') {
-    // Check if the message is from the current user
-    if (message.username === username) {
-      messageDiv.innerHTML = `<strong>You</strong>: ${message.message} <small>${message.timestamp}</small>`;
-    } else {
-      messageDiv.innerHTML = `<strong>${message.username}</strong>: ${message.message} <small>${message.timestamp}</small>`;
+  // Function to format the timestamp  seconds
+  const formatTimestamp = (timestamp) => {
+    let date;
+
+    // Parse timestamp as a number or string
+    if (typeof timestamp === 'number') {
+      date = new Date(timestamp * 1000); // Convert seconds to milliseconds
+    } else if (typeof timestamp === 'string') {
+      date = new Date(timestamp);
+      if (isNaN(date.getTime())) {
+        date = new Date(Date.parse(timestamp)); // Parse ISO string
+      }
     }
-  } else if (message.type === 'system') {
-    messageDiv.innerHTML = `<em>${message.message}</em>`;
-    messageDiv.style.display = "block";
-    messageDiv.style.opacity = 1;
-    setTimeout(() => {
-      messageDiv.style.transition = "opacity 0.5s";
-      messageDiv.style.opacity = 0;
-      setTimeout(() => {
-        messageDiv.style.display = "none";
-      }, 500);
-    }, 3000); 
-  } else if (message.type === 'success') {
+    if (isNaN(date.getTime())) {
+      console.error("Invalid timestamp:", timestamp);
+      return timestamp; // Fallback to raw timestamp if invalid
+    }
+
+    // Manually format the timestamp
+    const hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const amPm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 || 12; // Convert 0 to 12 in 12-hour format
+    return `${formattedHours}:${minutes} ${amPm}`;
+  };
+
+  // Handle different message types
+  if (message.type === 'chat') {
+    const timestamp = formatTimestamp(message.timestamp); // Format the timestamp
+    if (message.username === username) {
+      messageDiv.innerHTML = `${message.message} <em style="font-size: .8rem; color: black">${timestamp}</em>`;
+      messageDiv.style.textAlign = 'right';
+      messageDiv.style.color = 'green';
+    } else {
+      messageDiv.innerHTML = `<em style="font-size: .8rem; color: black">${timestamp}</em>  <strong style='color:black'>${message.username}</strong>: ${message.message}`;
+      messageDiv.style.textAlign = 'left';
+      messageDiv.style.color = 'blue';
+    }
+  } else if (message.type === 'system' || message.type === 'success') {
     messageDiv.innerHTML = `<em>${message.message}</em>`;
     messageDiv.style.display = "block";
     messageDiv.style.opacity = 1;
@@ -56,10 +79,11 @@ ws.onmessage = (event) => {
     }, 3000);
   }
 
-
+  // Append the message to the chat and scroll to the bottom
   chatMessages.appendChild(messageDiv);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 };
+
 
 document.getElementById("messageForm").addEventListener("submit", (e) => {
   e.preventDefault();
