@@ -92,10 +92,25 @@ button:hover{
   font-size: 2rem;
 }
 
+.text-formatting{
+  font-size: 1.4rem;
+  width: 20rem;
+  background-color: #007bff;
+  color: #c4e0ff;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+  box-shadow: 5px 5px 5px #acacac;
+  font-weight: bolder;
+  padding: .2rem 0;
+  border-radius: .5rem;
+}
+
 #messageForm{
   display: grid;
   grid-template-columns: 4fr 1fr;
   gap: 1rem;
+  margin-top: 1.5rem;;
 }
 
 #messageForm input {

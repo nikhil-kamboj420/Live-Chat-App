@@ -58,13 +58,17 @@ ws.onmessage = (event) => {
   if (message.type === 'chat') {
     const timestamp = formatTimestamp(message.timestamp); // Format the timestamp
     if (message.username === username) {
-      messageDiv.innerHTML = `${message.message} <em style="font-size: .8rem; color: black">${timestamp}</em>`;
+      messageDiv.innerHTML = `${message.message} <strong style='color:black'>You</strong> <em style="font-size: .8rem; color: black">${timestamp}</em>`;
       messageDiv.style.textAlign = 'right';
       messageDiv.style.color = 'green';
+      messageDiv.style.margin = '.5rem';
+
+    
     } else {
       messageDiv.innerHTML = `<em style="font-size: .8rem; color: black">${timestamp}</em>  <strong style='color:black'>${message.username}</strong>: ${message.message}`;
       messageDiv.style.textAlign = 'left';
       messageDiv.style.color = 'blue';
+      messageDiv.style.margin = '.5rem';
     }
   } else if (message.type === 'system' || message.type === 'success') {
     messageDiv.innerHTML = `<em>${message.message}</em>`;
@@ -126,3 +130,15 @@ function displayAvailableRooms(rooms) {
 
   availableRoomsDiv.appendChild(roomList); // Append the list to the available rooms div
 }
+
+
+
+// text formatting 
+const messageInput = document.getElementById("messageInput");
+let textFormatting = document.querySelector('.text-formatting');
+textFormatting.addEventListener('click', (e) => 
+{
+ if(e.target.innerText === 'B'){
+
+ }
+})
