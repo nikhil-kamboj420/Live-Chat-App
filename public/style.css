@@ -98,12 +98,18 @@ button:hover{
   background-color: #007bff;
   color: #c4e0ff;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4,1fr);
   place-items: center;
   box-shadow: 5px 5px 5px #acacac;
   font-weight: bolder;
   padding: .2rem 0;
   border-radius: .5rem;
+}
+
+#emojiPicker {
+  position: absolute; 
+  z-index: 1000; 
+  display: none;
 }
 
 #messageForm{

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1731951374724,
@@ -20,6 +20,18 @@
                 {
                     "date": 1731951407638,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,8 @@\n     <form id=\"joinForm\">\r\n       <input type=\"text\" id=\"username\" placeholder=\"Enter your username\" required>\r\n       <input type=\"text\" id=\"room\" placeholder=\"Enter room name\" required>\r\n       <button type=\"submit\">Join Chat</button>\r\n-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem quo, molestias beatae sint veniam illo aliquam consectetur itaque porro, incidunt cupiditate expedita voluptatum nobis corrupti sunt ad excepturi cumque optio?</p>\r\n     </form>\r\n   </div>\r\n   <script>\r\n     document.getElementById('joinForm').addEventListener('submit', (e) => {\r\n"
+                },
+                {
+                    "date": 1732555638436,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,6 +24,7 @@\n     });\r\n   </script>\r\n   <script src=\"./app.js\"></script>\r\n   <script src=\"./server.js\"></script>\r\n+  \r\n </body>\r\n </html>\r\n"
+                },
+                {
+                    "date": 1732555688148,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,7 +24,7 @@\n     });\r\n   </script>\r\n   <script src=\"./app.js\"></script>\r\n   <script src=\"./server.js\"></script>\r\n-  \r\n+  <script type=\"module\" src=\"https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js\"></script>\r\n </body>\r\n </html>\r\n"
+                },
+                {
+                    "date": 1732556571564,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,7 +24,6 @@\n     });\r\n   </script>\r\n   <script src=\"./app.js\"></script>\r\n   <script src=\"./server.js\"></script>\r\n-  <script type=\"module\" src=\"https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js\"></script>\r\n </body>\r\n </html>\r\n"
                 }
             ],
             "date": 1731951374724,

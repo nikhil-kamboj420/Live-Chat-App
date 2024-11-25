@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat Room</title>
+  <title>Real-Time Chat</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/index.css">
+
 </head>
 <body>
   <div id="availableRooms" class="container"></div> 
@@ -15,12 +17,22 @@
       <span id="bold" style="cursor: pointer;">B</span>
       <span id="italic" style="cursor: pointer;">I</span>
       <span id="link" style="cursor: pointer;">🔗</span>
+      <span id="underline" style="cursor: pointer;">U</span>
+      <button id="emojiButton">😊</button>
     </div>
     <form id="messageForm">
       <input type="text" id="messageInput" placeholder="Type your message..." required>
       <button type="submit">Send</button>
     </form>
+    <div id="emojiPicker"></div>
   </div>
   <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+<script>
+  const pickerOptions = { onEmojiSelect: console.log }
+  const picker = new EmojiMart.Picker(pickerOptions)
+
+  document.body.appendChild(picker)
+</script>
 </body>
 </html>

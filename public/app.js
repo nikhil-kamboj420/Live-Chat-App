@@ -133,12 +133,34 @@ function displayAvailableRooms(rooms) {
 
 
 
-// text formatting 
-const messageInput = document.getElementById("messageInput");
-let textFormatting = document.querySelector('.text-formatting');
-textFormatting.addEventListener('click', (e) => 
-{
- if(e.target.innerText === 'B'){
+// emojis into the input.
 
- }
-})
+const emojiButton = document.getElementById("emojiButton");
+const messageInput = document.getElementById("messageInput");
+const emojiPickerContainer = document.getElementById("emojiPicker");
+
+// Create an instance of the emoji picker
+const { Picker } = window.EmojiMart;
+const emojiPicker = new Picker({
+  onEmojiSelect: (emoji) => {
+    const currentValue = messageInput.value;
+    const cursorPosition = messageInput.selectionStart;
+    messageInput.value = currentValue.slice(0, cursorPosition) + emoji.native + currentValue.slice(cursorPosition);
+    emojiPickerContainer.style.display = "none"; // Hide the emoji picker after selection
+  },
+});
+
+// Append the emoji picker to the container
+emojiPickerContainer.appendChild(emojiPicker);
+
+// Toggle emoji picker visibility
+emojiButton.addEventListener("click", () => {
+  emojiPickerContainer.style.display = emojiPickerContainer.style.display === "none" ? "block" : "none";
+});
+
+// Hide emoji picker when clicking outside
+document.addEventListener("click", (event) => {
+  if (!emojiButton.contains(event.target) && !emojiPickerContainer.contains(event.target)) {
+    emojiPickerContainer.style.display = "none";
+  }
+});
