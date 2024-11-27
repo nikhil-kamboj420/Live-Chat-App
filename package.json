@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "A real-time chat application for seamless communication and collaboration.",
   "dependencies": {
+    "emoji-button": "^2.2.2",
     "emoji-mart": "^5.6.0"
   }
 }

@@ -106,10 +106,8 @@ button:hover{
   border-radius: .5rem;
 }
 
-#emojiPicker {
-  position: absolute; 
-  z-index: 1000; 
-  display: none;
+.emoji-picker{
+  display: block;
 }
 
 #messageForm{

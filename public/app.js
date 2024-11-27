@@ -42,7 +42,6 @@ ws.onmessage = (event) => {
       }
     }
     if (isNaN(date.getTime())) {
-      console.error("Invalid timestamp:", timestamp);
       return timestamp; // Fallback to raw timestamp if invalid
     }
 
@@ -131,36 +130,38 @@ function displayAvailableRooms(rooms) {
   availableRoomsDiv.appendChild(roomList); // Append the list to the available rooms div
 }
 
+// textfromatting 
 
-
-// emojis into the input.
-
-const emojiButton = document.getElementById("emojiButton");
+// text formatting 
 const messageInput = document.getElementById("messageInput");
-const emojiPickerContainer = document.getElementById("emojiPicker");
-
-// Create an instance of the emoji picker
-const { Picker } = window.EmojiMart;
-const emojiPicker = new Picker({
-  onEmojiSelect: (emoji) => {
-    const currentValue = messageInput.value;
-    const cursorPosition = messageInput.selectionStart;
-    messageInput.value = currentValue.slice(0, cursorPosition) + emoji.native + currentValue.slice(cursorPosition);
-    emojiPickerContainer.style.display = "none"; // Hide the emoji picker after selection
-  },
-});
-
-// Append the emoji picker to the container
-emojiPickerContainer.appendChild(emojiPicker);
-
-// Toggle emoji picker visibility
-emojiButton.addEventListener("click", () => {
-  emojiPickerContainer.style.display = emojiPickerContainer.style.display === "none" ? "block" : "none";
-});
-
-// Hide emoji picker when clicking outside
-document.addEventListener("click", (event) => {
-  if (!emojiButton.contains(event.target) && !emojiPickerContainer.contains(event.target)) {
-    emojiPickerContainer.style.display = "none";
+let textFormatting = document.querySelector('.text-formatting');
+textFormatting.addEventListener('click', (e) => 
+{
+if(e.target.innerText === 'B'){
+  messageInput.value = `<b>${messageInput.value}</b>`;
+ }
+ else if(e.target.innerText === 'I'){
+  messageInput.value = `<i>${messageInput.value}</i>`
   }
-});
+ else if(e.target.innerText === 'U'){
+    messageInput.value = `<u>${messageInput.value}</u>`
+  }
+ else if(e.target.innerText === '🔗'){
+  messageInput.value = `<a href="${messageInput.value}">${messageInput.value}</a>`
+ }
+ else if(e.target.innerText === '😊'){
+  document.getElementById('emoji').addEventListener('click',()=>{
+    
+ // Add the emoji selection functionality
+ document.querySelector('emoji-picker').addEventListener('emoji-click', event => {
+  const emoji = event.detail.unicode; // Get the selected emoji
+  const messageInput = document.getElementById('messageInput');
+  messageInput.value += emoji; // Append the selected emoji to the input field
+})
+  })
+
+ }   
+
+})
+
+// emojis support in the input.

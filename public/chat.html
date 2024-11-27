@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real-Time Chat</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/index.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/emoji-picker-element@^1.0.0"></script>
 </head>
 <body>
-  <div id="availableRooms" class="container"></div> 
-  <div class="chat-container">
-    <h2 id="roomName"></h2>
-    <div id="chatMessages" class="messages"></div>
-    <div class="text-formatting">
-      <span id="bold" style="cursor: pointer;">B</span>
-      <span id="italic" style="cursor: pointer;">I</span>
-      <span id="link" style="cursor: pointer;">🔗</span>
-      <span id="underline" style="cursor: pointer;">U</span>
-      <button id="emojiButton">😊</button>
+    <div id="availableRooms" class="container"></div> 
+    <div class="chat-container">
+        <h2 id="roomName"></h2>
+        <div id="chatMessages" class="messages"></div>
+        <div class="text-formatting">
+            <span id="bold" style="cursor: pointer;">B</span>
+            <span id="italic" style="cursor: pointer;">I</span>
+            <span id="link" style="cursor: pointer;">🔗</span>
+            <span id="underline" style="cursor: pointer;">U</span>
+            <span id="emoji" style="cursor: pointer;">😊</span>
+        </div>
+        <div class="emoji-picker">
+            <emoji-picker></emoji-picker>
+        </div>
+        <form id="messageForm">
+            <input type="text" id="messageInput" placeholder="Type your message..." required>
+            <button type="submit">Send</button>
+        </form>
     </div>
-    <form id="messageForm">
-      <input type="text" id="messageInput" placeholder="Type your message..." required>
-      <button type="submit">Send</button>
-    </form>
-    <div id="emojiPicker"></div>
-  </div>
-  <script src="app.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
-<script>
-  const pickerOptions = { onEmojiSelect: console.log }
-  const picker = new EmojiMart.Picker(pickerOptions)
-
-  document.body.appendChild(picker)
-</script>
+    <script src="./app.js"></script>
 </body>
 </html>
