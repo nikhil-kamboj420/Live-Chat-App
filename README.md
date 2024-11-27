@@ -25,7 +25,8 @@ Welcome to the **LIVE Chat Application**! This is a real-time web-based messagin
 - **Real-time Messaging:** Instant communication with other users.
 - **User  Authentication:** Secure login and user management.
 - **Group Chats:** Create and join chat rooms for group discussions.
-
+- **Message Timestamps:** Displaying the time when each message was sent or received, adding context to the conversation.
+- **File Sharing:** Allowing users to share files, images, or videos within the chat.
 ---
 
 ## Installation
