@@ -18,9 +18,11 @@
             <span id="link" style="cursor: pointer;">🔗</span>
             <span id="underline" style="cursor: pointer;">U</span>
             <span id="emoji" style="cursor: pointer;">😊</span>
+            <span id="file" style="cursor: pointer; font-size: 2rem;" title="Upload file">+</span>
+            <input type="file" id="fileInput" style="display: none;" multiple>
         </div>
-        <div class="emoji-picker">
-            <emoji-picker></emoji-picker>
+        <div id="emoji-container" class="emoji-picker" style="cursor: pointer; display: none;">
+            <emoji-picker style="position: absolute; top: 0; left: 0; z-index: 1000;"></emoji-picker>
         </div>
         <form id="messageForm">
             <input type="text" id="messageInput" placeholder="Type your message..." required>
