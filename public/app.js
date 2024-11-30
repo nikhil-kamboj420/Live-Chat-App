@@ -5,6 +5,10 @@ const room = urlParams.get("room");
 document.getElementById("roomName").innerText = `Room: ${room}`;
 
 const ws = new WebSocket(`ws://${window.location.hostname}:5500`);
+
+// Create an Audio object for notification sound
+const notificationSound = new Audio('./notification.wav'); 
+
 ws.onopen = () => {
   ws.send(JSON.stringify({ type: "join", username, room }));
   ws.send(JSON.stringify({ type: "getRooms" })); // Request available rooms
@@ -12,13 +16,12 @@ ws.onopen = () => {
 
 ws.onmessage = (event) => {
   const message = JSON.parse(event.data);
+  const chatMessages = document.getElementById("chatMessages");
 
   if (message.type === "roomsList") {
     displayAvailableRooms(message.rooms); // Update UI with room list
     return;
   }
-
-  const chatMessages = document.getElementById("chatMessages");
 
   if (message.type === "error") {
     alert(message.message);
@@ -28,7 +31,7 @@ ws.onmessage = (event) => {
 
   const messageDiv = document.createElement("div");
 
-  // Function to format the timestamp  seconds
+  // Function to format the timestamp
   const formatTimestamp = (timestamp) => {
     let date;
 
@@ -55,6 +58,9 @@ ws.onmessage = (event) => {
 
   // Handle different message types
   if (message.type === "chat") {
+    // Play the notification sound for new chat messages
+    notificationSound.play();
+
     const timestamp = formatTimestamp(message.timestamp); // Format the timestamp
     if (message.username === username) {
       messageDiv.innerHTML = `${message.message} <strong style='color:black'>You</strong> <em style="font-size: .8rem; color: black">${timestamp}</em>`;
@@ -88,6 +94,10 @@ ws.onmessage = (event) => {
 document.getElementById("messageForm").addEventListener("submit", (e) => {
   e.preventDefault();
   const messageInput = document.getElementById("messageInput");
+
+  // Play the notification sound when sending a message
+  notificationSound.play();
+
   ws.send(JSON.stringify({ type: "message", text: messageInput.value }));
   messageInput.value = "";
 });
@@ -199,3 +209,56 @@ document
     // Clear the file input for the next selection
     event.target.value = "";
   });
+
+
+  // creating new rooms
+  const newRoomInput = document.getElementById('newRoomInput');
+  const createRoomSpan = document.getElementById('createRoomSpan');
+  const blurBackground = document.getElementById('blurBackground');
+  
+  // Function to show the new room input and apply the blur effect
+  function showNewRoomInput() {
+    newRoomInput.style.display = 'block'; // Show the input
+  }
+  
+  // Function to hide the new room input and remove the blur effect
+  function hideNewRoomInput() {
+    newRoomInput.style.display = 'none'; // Hide the input
+    blurBackground.classList.remove('blur'); // Remove the blur class from the background
+  }
+  
+  // Add event listener for the span click
+  createRoomSpan.addEventListener('click', () => {
+    // Show the input when the span is clicked
+    showNewRoomInput();
+  });
+  
+  // Add event listener for input to apply blur
+  newRoomInput.addEventListener("input", () => {
+    blurBackground.classList.add("blur");
+  });
+  
+  // Add event listener for keydown to check for Enter key
+  newRoomInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      const roomName = newRoomInput.value.trim();
+      
+      if (roomName) {
+        // Send a message to the server to create a new room
+        ws.send(JSON.stringify({ type: 'createRoom', room: roomName }));
+        window.location.reload();
+        newRoomInput.value = '';
+        
+        // Hide the input and remove the blur effect
+        hideNewRoomInput();
+        window.location.reload(); // Reload the page if necessary
+      } else {
+        alert('Please enter a room name.');
+      }
+    }
+  });
+
+  createRoomSpan.addEventListener('click',()=>{
+    newRoomInput.style.display='inline-block';
+    blurBackground.classList.add("blur");
+  })

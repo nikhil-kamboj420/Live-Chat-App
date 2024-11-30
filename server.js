@@ -38,6 +38,10 @@ wss.on('connection', (ws) => {
         case 'leave':
           handleLeave(ws);
           break;
+        
+        case 'createRoom':
+          handleCreateRoom(ws, message.room);
+          break;
 
         case 'getRooms':
           handleGetRooms(ws);
@@ -51,6 +55,7 @@ wss.on('connection', (ws) => {
       ws.send(JSON.stringify({ type: 'error', message: 'Invalid message format.' }));
     }
   });
+  
 
   ws.on('close', () => handleLeave(ws));
   ws.on('error', (error) => {
@@ -132,6 +137,21 @@ function broadcast(room, message) {
   rooms[room].forEach((client) => {
     client.socket.send(JSON.stringify(message));
   });
+}
+
+function handleCreateRoom(ws, room) {
+  if (!room) {
+      ws.send(JSON.stringify({ type: 'error', message: 'Room name cannot be empty.' }));
+      return;
+  }
+
+  // Ensure the room does not already exist
+  if (!rooms[room]) {
+      rooms[room] = []; // Create the room
+      ws.send(JSON.stringify({ type: 'success', message: `Room "${room}" created successfully!` }));
+  } else {
+      ws.send(JSON.stringify({ type: 'error', message: 'Room already exists.' }));
+  }
 }
 
 function handleGetRooms(ws) {
