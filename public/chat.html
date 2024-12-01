@@ -5,30 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real-Time Chat</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chat@Media.css">
+    <link rel="icon" href="./favicon.png">
     <script type="module" src="https://unpkg.com/emoji-picker-element@^1.0.0"></script>
 </head>
 <body>
-    <div id="availableRooms" class="container"></div> 
-    <div class="chat-container">
-        <h2 id="roomName"></h2>
-        <div id="chatMessages" class="messages"></div>
-        <div class="text-formatting">
-            <span id="bold" style="cursor: pointer;">B</span>
-            <span id="italic" style="cursor: pointer;">I</span>
-            <span id="link" style="cursor: pointer;">🔗</span>
-            <span id="underline" style="cursor: pointer;">U</span>
-            <span id="emoji" style="cursor: pointer;">😊</span>
-            <span id="file" style="cursor: pointer; font-size: 2rem;" title="Upload file">+</span>
-            <input type="file" id="fileInput" style="display: none;" multiple>
-        </div>
-        <div id="emoji-container" class="emoji-picker" style="cursor: pointer; display: none;">
-            <emoji-picker style="position: absolute; top: 0; left: 0; z-index: 1000;"></emoji-picker>
-        </div>
-        <form id="messageForm">
-            <input type="text" id="messageInput" placeholder="Type your message..." required>
-            <button type="submit">Send</button>
-        </form>
+    <div class="room_wrapper">
+        <input type="text" style="display: none;" id="newRoomInput" placeholder="Enter new room name..." required>
+        <span title="New Room" id="createRoomSpan">+</span>
+        <div id="availableRooms" class="container">
+        </div> 
     </div>
+    <div id="blurBackground" class="blur-background">
+        <div class="chat-container">
+            <h2 id="roomName"></h2>
+            <div id="chatMessages" class="messages"></div>
+            <div class="text-formatting">
+                <span id="bold" style="cursor: pointer;">B</span>
+                <span id="italic" style="cursor: pointer;">I</span>
+                <span id="link" style="cursor: pointer;">🔗</span>
+                <span id="underline" style="cursor: pointer;">U</span>
+                <span id="emoji" style="cursor: pointer;">😊</span>
+                <span id="file" style="cursor: pointer; font-size: 2rem;" title="Upload file">+</span>
+                <input type="file" id="fileInput" style="display: none;" multiple>
+            </div>
+            <div id="emoji-container" class="emoji-picker" style="cursor: pointer; display: none;">
+                <emoji-picker style="position: absolute; top: 0; left: 0; z-index: 1000;"></emoji-picker>
+            </div>
+            <form id="messageForm">
+                <input type="text" id="messageInput" placeholder="Type your message..." required>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    
     <script src="./app.js"></script>
 </body>
 </html>

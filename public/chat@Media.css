@@ -1,0 +1,151 @@
+/* Media queries for screens with a max-width of 480px */
+@media (max-width: 480px) {
+    body {
+        background-color: #f2f2f2;
+        font-size: 14px; 
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        padding:.2rem;
+        height: auto;
+    }
+    
+    .room_wrapper{
+        width: 80vw;
+    }
+    .smallDeviceStyle{
+        background-color: aqua;
+        z-index: 997;
+        position: absolute;
+    }
+    .chat-container {
+        width: 100%; 
+        height: auto; 
+        padding: 1rem; 
+        display: block;
+    }
+    .blur-background{
+      width: 100vw;
+      left: 0;
+    }
+    h1 {
+        font-size: 1.8rem; 
+    }
+
+    .messages {
+        height: 63vh; 
+        padding: 0.5rem; 
+    }
+
+    input[type="text"] {
+        font-size: 1rem;
+        padding: 0.5rem; 
+    }
+
+    #newRoomInput{
+        background-color: black;
+        padding: 1.2rem 2rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 0.5rem 1.5rem; 
+    }
+
+    #availableRooms {
+        width: 100%;
+        margin-right: 0;
+        height: 99vh;
+        left: 1%;
+        display: none;
+    }
+
+    #availableRooms ul li {
+        font-size: 1.5rem; 
+    }
+
+    .room_wrapper span {
+        font-size: 2.3rem;
+        left: -4rem;
+    }
+    .room_wrapper span:nth-child(1) {
+        font-size: 3.3rem;
+        left: 3rem;
+    }
+    
+}
+@media (max-width: 768px) {
+    body {
+        background-color: #f2f2f2; 
+        font-size: 14px; 
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        padding:.2rem;
+        height: auto;
+    }
+    
+    .room_wrapper{
+        width: 80vw;
+    }
+    .smallDeviceStyle{
+        background-color: aqua;
+        z-index: 997;
+        position: absolute;
+    }
+    .chat-container {
+        width: 100%; 
+        height: auto; 
+        padding: 1rem; 
+        display: block;
+    }
+    .blur-background{
+      width: 100vw;
+      left: 0;
+    }
+    h1 {
+        font-size: 1.8rem; 
+    }
+
+    .messages {
+        height: 63vh; 
+        padding: 0.5rem; 
+    }
+
+    input[type="text"] {
+        font-size: 1rem;
+        padding: 0.5rem; 
+    }
+
+    #newRoomInput{
+        background-color: black;
+        padding: 1.2rem 2rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 0.5rem 1.5rem; 
+    }
+
+    #availableRooms {
+        width: 100%;
+        margin-right: 0;
+        height: 99vh;
+        left: 1%;
+        display: none;
+    }
+
+    #availableRooms ul li {
+        font-size: 1.5rem; 
+    }
+
+    .room_wrapper span {
+        font-size: 2.3rem;
+        left: -4rem;
+    }
+    .room_wrapper span:nth-child(1) {
+        font-size: 3.3rem;
+        left: 3rem;
+    }
+    
+}
