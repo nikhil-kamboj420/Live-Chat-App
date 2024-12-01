@@ -209,3 +209,79 @@ document
     // Clear the file input for the next selection
     event.target.value = "";
   });
+
+
+  // creating new rooms
+  const newRoomInput = document.getElementById('newRoomInput');
+  const createRoomSpan = document.getElementById('createRoomSpan');
+  const blurBackground = document.getElementById('blurBackground');
+  
+  // Function to show the new room input and apply the blur effect
+  function showNewRoomInput() {
+    newRoomInput.style.display = 'block'; // Show the input
+  }
+  
+  // Function to hide the new room input and remove the blur effect
+  function hideNewRoomInput() {
+    newRoomInput.style.display = 'none'; // Hide the input
+    blurBackground.classList.remove('blur'); // Remove the blur class from the background
+  }
+  
+  // Add event listener for the span click
+  createRoomSpan.addEventListener('click', () => {
+    // Show the input when the span is clicked
+    showNewRoomInput();
+  });
+  
+  // Add event listener for input to apply blur
+  newRoomInput.addEventListener("input", () => {
+    blurBackground.classList.add("blur");
+  });
+  
+  // Add event listener for keydown to check for Enter key
+  newRoomInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      const roomName = newRoomInput.value.trim();
+      
+      if (roomName) {
+        // Send a message to the server to create a new room
+        ws.send(JSON.stringify({ type: 'createRoom', room: roomName }));
+        window.location.reload();
+        newRoomInput.value = '';
+        
+        // Hide the input and remove the blur effect
+        hideNewRoomInput();
+        window.location.reload(); // Reload the page if necessary
+      } else {
+        alert('Please enter a room name.');
+      }
+    }
+  });
+
+  createRoomSpan.addEventListener('click',()=>{
+    newRoomInput.style.display='inline-block';
+    blurBackground.classList.add("blur");
+});
+  if(window.innerWidth<480){
+    const availableRoomsDiv = document.getElementById("availableRooms");
+    availableRoomsDiv.classList.add("smallDeviceStyle")
+    const roomWrapper = document.querySelector(".room_wrapper");
+    let roomBar = document.createElement('span');
+    roomBar.textContent = "→";
+    roomWrapper.prepend(roomBar);
+    roomBar.addEventListener('click',()=>{
+      availableRoomsDiv.style.display='block';
+    })
+  }
+
+    else if(window.innerWidth>480 && window.innerWidth<768){
+    const availableRoomsDiv = document.getElementById("availableRooms");
+    availableRoomsDiv.classList.add("smallDeviceStyle")
+    const roomWrapper = document.querySelector(".room_wrapper");
+    let roomBar = document.createElement('span');
+    roomBar.textContent = "→";
+    roomWrapper.prepend(roomBar);
+    roomBar.addEventListener('click',()=>{
+      availableRoomsDiv.style.display='block';
+    })
+  }
